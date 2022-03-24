@@ -71,7 +71,7 @@ export default Component.extend({
     this._super.apply(this, arguments);
 
     scheduleOnce('afterRender', () => {
-      this.get('register')(this);
+      this.get('register') && this.get('register')(this);
     });
   },
 
@@ -81,7 +81,7 @@ export default Component.extend({
    * @override
    */
   willDestroyElement: function() {
-    this.get('unregister')(this);
+    this.get('unregister') && this.get('unregister')(this);
     this._super.apply(this, arguments);
   }
 });
